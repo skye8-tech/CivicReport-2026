@@ -1,19 +1,3 @@
-const reportRole = new URLSearchParams(window.location.search).get("from");
-const reportDashboard = ["admin", "authority", "user"].includes(reportRole)
-  ? reportRole
-  : "user";
-
-document.getElementById("dashboardLink").href =
-  `../pages/${reportDashboard}.html`;
-document.getElementById("myReportsLink").href =
-  `../pages/${reportDashboard}.html`;
-document.getElementById("statisticsLink").href =
-  `../pages/${reportDashboard}.html`;
-document.getElementById("publicFeedLink").href =
-  `../pages/community.html?from=${reportDashboard}`;
-document.getElementById("newReportLink").href =
-  `../pages/report.html?from=${reportDashboard}`;
-
 // ====================== CHARACTER COUNTER ======================
 const description = document.getElementById("description");
 const charCount = document.getElementById("charCount");
@@ -131,9 +115,24 @@ document.getElementById("reportForm").addEventListener("submit", function (e) {
       image: imageData || null,
     };
 
-    let reports = JSON.parse(localStorage.getItem("civicReports")) || [];
+    let reports = [];
+    try {
+      reports = JSON.parse(localStorage.getItem("civicReports") || "[]");
+      if (!Array.isArray(reports)) reports = [];
+    } catch (error) {
+      reports = [];
+    }
+
     reports.push(report);
-    localStorage.setItem("civicReports", JSON.stringify(reports));
+
+    try {
+      localStorage.setItem("civicReports", JSON.stringify(reports));
+    } catch (error) {
+      alert(
+        "This report could not be saved permanently. The selected image may be too large for browser storage.",
+      );
+      return;
+    }
 
     alert(
       "Report submitted successfully!\n\nYour Reference ID: " +

@@ -23,7 +23,14 @@ let visibleCount = 6;
 
 // load reps
 function loadReports() {
-  const saved = JSON.parse(localStorage.getItem("civicReports")) || [];
+  let saved = [];
+  try {
+    saved = JSON.parse(localStorage.getItem("civicReports") || "[]");
+    if (!Array.isArray(saved)) saved = [];
+  } catch (error) {
+    saved = [];
+  }
+
   allReports = saved;
   filteredReports = [...allReports];
   renderFeed();
