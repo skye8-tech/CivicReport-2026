@@ -29,8 +29,7 @@ let visibleCount = 3;
 function loadReports() {
   const saved = localStorage.getItem("civicReports");
 
-  console.log("Raw localStorage data:", saved); // check this in console
-
+  console.log("Raw localStorage data:", saved);
   if (saved) {
     try {
       allReports = JSON.parse(saved);
