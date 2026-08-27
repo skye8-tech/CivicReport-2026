@@ -106,5 +106,5 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
   document.getElementById("strengthText").textContent = "Weak";
   document.getElementById("strengthText").className =
     "text-xs text-red-500 font-medium";
-  window.location.href = "/pages/user.html";
+  window.location.href = "/pages/admin.html";
 });

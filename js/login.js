@@ -107,5 +107,5 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   document.getElementById("loginForm").reset();
 
   // 5. Redirect to Dashboard
-  window.location.href = "../pages/user.html";
+  window.location.href = "../pages/admin.html";
 });
