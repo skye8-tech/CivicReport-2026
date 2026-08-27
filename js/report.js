@@ -69,6 +69,42 @@ document
     );
   });
 
+// ====================== EDIT MODE ======================
+const editId = new URLSearchParams(window.location.search).get("edit");
+let isEditMode = false;
+let originalImage = null;
+
+if (editId) {
+  const reports = JSON.parse(localStorage.getItem("civicReports") || "[]");
+  const reportToEdit = reports.find((r) => r.referenceId === editId);
+
+  if (reportToEdit) {
+    isEditMode = true;
+    originalImage = reportToEdit.image || null;
+
+    // Fill the form with existing data
+    document.getElementById("reporterName").value =
+      reportToEdit.reporterName || "";
+    document.getElementById("reporterPhone").value =
+      reportToEdit.reporterPhone || "";
+    document.getElementById("category").value = reportToEdit.category || "";
+    document.getElementById("urgency").value =
+      reportToEdit.urgency || "Medium - Needs Attention";
+    document.getElementById("location").value = reportToEdit.location || "";
+    document.getElementById("description").value =
+      reportToEdit.description || "";
+    charCount.textContent = document.getElementById("description").value.length;
+
+    // Change button text
+    const submitBtn = document.querySelector(
+      "#reportForm button[type='submit']",
+    );
+    if (submitBtn) {
+      submitBtn.textContent = "Save Changes";
+    }
+  }
+}
+
 // ====================== FORM SUBMIT ======================
 document.getElementById("reportForm").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -100,21 +136,8 @@ document.getElementById("reportForm").addEventListener("submit", function (e) {
     return;
   }
 
-  // Save report
+  // Save or Update report
   function saveReport(imageData) {
-    const report = {
-      referenceId: "CR-" + Date.now().toString().slice(-6),
-      reporterName: reporterName,
-      reporterPhone: reporterPhone,
-      category: category,
-      urgency: urgency,
-      location: location,
-      description: descriptionValue,
-      status: "Reported",
-      date: new Date().toLocaleString(),
-      image: imageData || null,
-    };
-
     let reports = [];
     try {
       reports = JSON.parse(localStorage.getItem("civicReports") || "[]");
@@ -123,21 +146,62 @@ document.getElementById("reportForm").addEventListener("submit", function (e) {
       reports = [];
     }
 
-    reports.push(report);
+    if (isEditMode && editId) {
+      // ========== UPDATE EXISTING REPORT ==========
+      reports = reports.map(function (report) {
+        if (report.referenceId === editId) {
+          return {
+            ...report,
+            reporterName: reporterName,
+            reporterPhone: reporterPhone,
+            category: category,
+            urgency: urgency,
+            location: location,
+            description: descriptionValue,
+            image: imageData !== null ? imageData : report.image, // keep old image if no new one
+            date: report.date, // keep original date
+          };
+        }
+        return report;
+      });
 
-    try {
-      localStorage.setItem("civicReports", JSON.stringify(reports));
-    } catch (error) {
-      alert(
-        "This report could not be saved permanently. The selected image may be too large for browser storage.",
-      );
-      return;
+      try {
+        localStorage.setItem("civicReports", JSON.stringify(reports));
+        alert("Report updated successfully!");
+      } catch (error) {
+        alert("Could not save changes. The image may be too large.");
+        return;
+      }
+    } else {
+      // ========== CREATE NEW REPORT ==========
+      const report = {
+        referenceId: "CR-" + Date.now().toString().slice(-6),
+        reporterName: reporterName,
+        reporterPhone: reporterPhone,
+        category: category,
+        urgency: urgency,
+        location: location,
+        description: descriptionValue,
+        status: "Reported",
+        date: new Date().toLocaleString(),
+        image: imageData || null,
+      };
+
+      reports.push(report);
+
+      try {
+        localStorage.setItem("civicReports", JSON.stringify(reports));
+        alert(
+          "Report submitted successfully!\n\nYour Reference ID: " +
+            report.referenceId,
+        );
+      } catch (error) {
+        alert(
+          "This report could not be saved. The selected image may be too large.",
+        );
+        return;
+      }
     }
-
-    alert(
-      "Report submitted successfully!\n\nYour Reference ID: " +
-        report.referenceId,
-    );
 
     // Clear form
     document.getElementById("reportForm").reset();
@@ -145,7 +209,7 @@ document.getElementById("reportForm").addEventListener("submit", function (e) {
     fileList.innerHTML = "";
   }
 
-  // Handle image upload
+  // Handle image
   if (photoInput.files && photoInput.files[0]) {
     const reader = new FileReader();
     reader.onload = function (event) {
@@ -153,6 +217,7 @@ document.getElementById("reportForm").addEventListener("submit", function (e) {
     };
     reader.readAsDataURL(photoInput.files[0]);
   } else {
-    saveReport(null);
+    // If editing and no new image selected, keep the old one
+    saveReport(isEditMode ? originalImage : null);
   }
 });
