@@ -13,7 +13,7 @@ document
     const confirmPassword = document.getElementById("confirmPassword").value;
     const terms = document.getElementById("terms").checked;
 
-    // ========== VALIDATION ==========
+    // validation
 
     // 1. Check required fields
     if (
@@ -52,7 +52,7 @@ document
       return;
     }
 
-    // ========== SAVE TO LOCAL STORAGE ==========
+    //save to local storage
 
     // Create authority object
     const authority = {
