@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - CivicReport</title>
+    <link rel="stylesheet" href="../styles/footer.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../styles/about.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- header -->
+        <div class="header">
+            <h1>About CivicReport</h1>
+            <p>Empowering communities to report and resolve local incidents together.</p>
+        </div>
+
+        <!-- live stats from localstorage -->
+        <div class="stats-row">
+            <div class="stat-box">
+                <div class="stat-number" id="totalReports">0</div>
+                <div class="stat-label">Total Reports</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="resolvedReports">0</div>
+                <div class="stat-label">Resolved</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="openReports">0</div>
+                <div class="stat-label">Open Incidents</div>
+            </div>
+        </div>
+
+        <!-- mission -->
+        <div class="mission">
+            <h2>Our Mission</h2>
+            <p>
+                CivicReport was built to give every citizen a simple way to report community problems
+                such as vandalism, road hazards, noise, and suspicious activities — and to help
+                authorities respond faster with clear information.
+            </p>
+        </div>
+
+        <!-- about content -->
+        <div class="about-card">
+            <h2>What is CivicReport?</h2>
+            <p>
+                CivicReport is a community incident reporting platform. Citizens can submit reports
+                with photos, location, and contact details. Authorities and admins can view, filter,
+                and update the status of each report from dedicated dashboards.
+            </p>
+            <p>
+                The system runs fully in the browser using local storage, making it easy to use
+                without complex setup — ideal for estates, schools, and local communities.
+            </p>
+        </div>
+
+        <div class="about-card">
+            <h2>Key Features</h2>
+            <ul class="features-list">
+                <li>Report incidents with name, phone, category, location & photo</li>
+                <li>Public Community Feed with search and filters</li>
+                <li>User Dashboard with personal stats and recent reports</li>
+                <li>Authority Dashboard for actionable items and status updates</li>
+                <li>Admin System Overview with full table, CSV/JSON export</li>
+                <li>Live incident map and priority markers</li>
+                <li>Safety Tools Marketplace (fire extinguishers & more)</li>
+            </ul>
+        </div>
+
+        <div class="about-card">
+            <h2>Who is it for?</h2>
+            <p>
+                CivicReport is designed for ordinary citizens, estate managers, local authorities,
+                security teams, schools, and community leaders who want a simple way to track and
+                resolve local issues.
+            </p>
+        </div>
+
+        <p class="note">CivicReport • Built for safer communities</p>
+
+    </div>
+
+    <script>
+        // load stats from localstorage
+        function loadAboutStats() {
+            const reports = JSON.parse(localStorage.getItem("civicReports")) || [];
+
+            let resolved = 0;
+            let open = 0;
+
+            reports.forEach(function (report) {
+                if (report.status === "Resolved") {
+                    resolved++;
+                } else {
+                    open++;
+                }
+            });
+
+            document.getElementById("totalReports").textContent = reports.length;
+            document.getElementById("resolvedReports").textContent = resolved;
+            document.getElementById("openReports").textContent = open;
+        }
+
+        // start
+        loadAboutStats();
+    </script>
+
+    <script src="../js/nav.js"></script>
+    <script src="../js/footer.js"></script>
+</body>
+
+</html>

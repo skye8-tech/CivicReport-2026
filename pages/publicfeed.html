@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>communityfeed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/community.css">
+</head>
+
+<body>
+    <!-- page content -->
+    <div class="containers">
+        <!-- hearder -->
+        <div class="header">
+            <div>
+                <h1>Community Feed</h1>
+                <p>Stay informed about local incidents and community updates.</p>
+            </div>
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search incidents...">
+            </div>
+        </div>
+
+        <!-- filters -->
+        <div class="filters" id="filterButtons">
+            <button class="filter-btn active" data-filter="all">All Filters</button>
+            <button class="bar">|</button>
+            <button class="filter-btn active" data-filter="all-categories">All Categories</button>
+            <button class="filter-btn active" data-filter="Vandalism">Vandalism</button>
+            <button class="filter-btn active" data-filter="Infrastructure">Infrastructure</button>
+            <button class="filter-btn active" data-filter="Suspicious Activity">Suspicious Activity</button>
+            <button class="filter-btn active" data-filter="Traffic">Traffic</button>
+            <button class="filter-btn active" data-filter="Pending">Status: <span
+                    class="pending">Pending</span></button>
+            <button class="filter-btn active" data-filter="Resolved">Status: <span
+                    class="resolved">Resolved</span></button>
+        </div>
+
+        <!-- cards -->
+        <div class="feed-grid" id="feedGrid">
+            <!-- load from js -->
+        </div>
+
+        <!-- Load more btn-->
+        <div class="load-more">
+            <button onclick="loadMore()">Load More Incidents</button>
+        </div>
+
+    </div>
+
+    <!-- modal -->
+    <section>
+        <div id="viewModal" class="modal">
+            <div class="modal-content">
+                <!-- Header -->
+                <div class="modal-header">
+                    <h2>Incident Details</h2>
+                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                </div>
+
+                <!-- Body -->
+                <div class="modal-body">
+                    <div class="detail-row">
+                        <span class="label">Reference ID:</span>
+                        <span id="modalId">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Category:</span>
+                        <span id="modalCategory">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Location:</span>
+                        <span id="modalLocation">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Status:</span>
+                        <span id="modalStatus">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Date:</span>
+                        <span id="modalDate">-</span>
+                    </div>
+
+                    <hr>
+
+                    <div>
+                        <p class="section-title">Description</p>
+                        <p id="modalDescription" class="description-text">-</p>
+                    </div>
+
+                    <!-- Image (hidden by default) -->
+                    <div id="modalImageContainer" class="image-container">
+                        <p class="section-title">Photo</p>
+                        <img id="modalImage" src="" alt="Report image">
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="modal-footer">
+                    <button class="close-modal-btn" onclick="closeModal()">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <script src="../js/community.js"></script>
+
+    <script src="../js/nav.js"></script>
+    <script src="../js/footer.js"></script>
+</body>
+
+</html>

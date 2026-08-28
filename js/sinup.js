@@ -93,6 +93,8 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
     password,
     createdAt: new Date().toISOString(),
   };
+
+  window.location.href = "/pages/admin.html";
   localStorage.setItem("authorityUsers", JSON.stringify(signup));
 
   saveUser(newUser);
@@ -107,5 +109,4 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
   document.getElementById("strengthText").textContent = "Weak";
   document.getElementById("strengthText").className =
     "text-xs text-red-500 font-medium";
-  window.location.href = "/pages/admin.html";
 });

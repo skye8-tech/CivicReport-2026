@@ -1,0 +1,146 @@
+@import "../styles/base.css";
+@import "../styles/reset.css";
+
+body {
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 32px;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #64748b;
+    font-size: 16px;
+}
+
+/* about card */
+.about-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.about-card h2 {
+    font-size: 20px;
+    color: #0f172a;
+    margin-bottom: 12px;
+}
+
+.about-card p {
+    font-size: 15px;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+/* features list */
+.features-list {
+    list-style: none;
+    margin-top: 12px;
+}
+
+.features-list li {
+    font-size: 14px;
+    color: #334155;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.features-list li:last-child {
+    border-bottom: none;
+}
+
+.features-list li::before {
+    content: "✓ ";
+    color: #16a34a;
+    font-weight: bold;
+}
+
+/* stats */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-box {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #64748b;
+}
+
+/* mission */
+.mission {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.mission h2 {
+    color: #1e40af;
+    margin-bottom: 10px;
+}
+
+.mission p {
+    color: #1e3a8a;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* footer note */
+.note {
+    text-align: center;
+    font-size: 13px;
+    color: #94a3b8;
+    margin-top: 20px;
+}
+
+/* responsive */
+@media (max-width: 700px) {
+    .stats-row {
+        grid-template-columns: 1fr;
+    }
+
+    .header h1 {
+        font-size: 26px;
+    }
+
+    .about-card {
+        padding: 24px 18px;
+    }
+}
