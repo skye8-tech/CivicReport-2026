@@ -19,6 +19,7 @@ body {
     position: sticky;
     top: 0;
     overflow-y: auto;
+    transition: transform 0.3s ease;
 }
 
 /* logo */
@@ -160,28 +161,42 @@ body {
     height: 44px;
     border-radius: 8px;
     cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .sidebar.open {
     transform: translateX(0);
 }
 
-/* reponsive */
+/* responsivenes */
 /* tablet */
 @media (max-width: 1024px) {
     .sidebar {
         width: 220px;
+        padding: 20px 14px;
+    }
+
+    .logo-text {
+        font-size: 1.15rem;
+    }
+
+    .menu a,
+    .bottom-links a {
+        font-size: 13.5px;
+        padding: 10px 12px;
     }
 }
 
-/*large phone */
+/* large phone*/
 @media (max-width: 768px) {
     body {
         flex-direction: column;
     }
 
     .burger-btn {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .sidebar {
@@ -190,16 +205,18 @@ body {
         left: 0;
         height: 100vh;
         width: 260px;
+        max-width: 80%;
         transform: translateX(-100%);
-        transition: transform 0.3s ease;
         z-index: 1000;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
         border-right: none;
     }
 
     .main {
-        padding-top: 70px;
         width: 100%;
+        padding-top: 70px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 }
 
@@ -208,10 +225,16 @@ body {
     .sidebar {
         width: 100%;
         max-width: 280px;
+        padding: 20px 14px;
     }
 
     .logo-text {
         font-size: 1.1rem;
+    }
+
+    .subtitle {
+        font-size: 11px;
+        padding-left: 36px;
     }
 
     .menu a,
@@ -223,5 +246,33 @@ body {
     .new-report-btn {
         font-size: 13px;
         padding: 11px;
+    }
+
+    .burger-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+        top: 12px;
+        left: 12px;
+    }
+
+    .main {
+        padding-top: 65px;
+    }
+}
+
+/* very small phones */
+@media (max-width: 360px) {
+    .sidebar {
+        max-width: 260px;
+    }
+
+    .logo-text {
+        font-size: 1rem;
+    }
+
+    .menu a,
+    .bottom-links a {
+        font-size: 12.5px;
     }
 }
