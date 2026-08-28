@@ -3,6 +3,7 @@ const adminLoginForm = document.getElementById("adminLoginForm");
 
 adminLoginForm.addEventListener("submit", function (e) {
   e.preventDefault();
+
   const email = document.getElementById("adminEmail").value.trim();
   const password = document.getElementById("adminPassword").value.trim();
 
@@ -27,6 +28,9 @@ adminLoginForm.addEventListener("submit", function (e) {
       password: "admin123",
       role: "admin",
     });
+
+    // save admin account to local storage
+    localStorage.setItem("civicAdmins", JSON.stringify(admins));
   }
 
   // find admin
