@@ -189,12 +189,20 @@
         <!-- map -->
         <div class="map-box">
             <div class="map-title">Live Incident Map</div>
+
             <div class="map-area">
+                <!-- dots
                 <div class="dot red"></div>
                 <div class="dot orange"></div>
-                <div class="dot yellow"></div>
-                <iframe src="https://maps.app.goo.gl/ZDKtYhCwq77EJDbi8" frameborder="0"></iframe>
+                <div class="dot yellow"></div> -->
+
+                <!-- google map -->
+                <iframe id="map" title="Map of the selected branch"
+                    src="https://www.google.com/maps?q=Commercial%20Avenue%2C%20Bamenda%2C%20Cameroon&z=15&output=embed"
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen>
+                </iframe>
             </div>
+
             <div class="legend">
                 <div class="legend-item">
                     <div class="legend-dot" style="background:#ef4444"></div> High Priority
@@ -204,7 +212,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
 
@@ -267,8 +274,9 @@
             </div>
         </div>
     </section>
+
     <script src="../js/autho.js"></script>
-      <script src="../js/burger.js"></script>
+    <script src="../js/burger.js"></script>
 </body>
 
 </html>
