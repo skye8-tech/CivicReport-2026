@@ -6,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - CivicReport</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- get fonts -->
+    <!--fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg-gray-200 min-h-screen flex items-center justify-center p-4">
 
-    <!--main card -->
+    <!--content card -->
     <div class="bg-white rounded-2xl shadow-xl overflow-hidden max-w-5xl w-full flex flex-col md:flex-row">
 
         <!-- left-->
         <div class="bg-blue-100 p-8 md:p-12 md:w-5/12 flex flex-col">
-
             <!-- logo -->
             <div class="flex items-center gap-2 mb-8 text-blue-600">
                 <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
@@ -27,7 +26,7 @@
                 <span class="text-xl font-semibold  ">CivicReport</span>
             </div>
 
-            <!-- Main Heading -->
+            <!-- header-->
             <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-4">
                 Join the<br>community.
             </h1>
@@ -84,7 +83,7 @@
                 </div>
             </div>
 
-            <!-- Simple illustration placeholder -->
+            <!-- map -->
             <div class="mt-auto hidden md:block">
                 <div class="map">
                     <iframe src="https://maps.app.goo.gl/LZPt6RAqKobkout67" frameborder="0"></iframe>
@@ -98,8 +97,7 @@
             <p class="text-gray-500 text-sm mb-8">Join CivicReport to start making a difference.</p>
 
             <form id="signupForm" class="space-y-5">
-
-                <!-- Full Name -->
+                <!-- name -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                     <div class="relative">
@@ -115,7 +113,7 @@
                     </div>
                 </div>
 
-                <!-- Email -->
+                <!-- email -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
                     <div class="relative">
@@ -221,7 +219,6 @@
             </p>
         </div>
     </div>
-
 
     <script src="../js/sinup.js"></script>
 </body>
