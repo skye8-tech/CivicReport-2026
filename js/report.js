@@ -1,4 +1,4 @@
-// ====================== CHARACTER COUNTER ======================
+// char count
 const description = document.getElementById("description");
 const charCount = document.getElementById("charCount");
 
@@ -6,7 +6,7 @@ description.addEventListener("input", function () {
   charCount.textContent = this.value.length;
 });
 
-// ====================== SHOW SELECTED FILES ======================
+// show selected file
 const photosInput = document.getElementById("photos");
 const fileList = document.getElementById("fileList");
 
@@ -21,7 +21,7 @@ photosInput.addEventListener("change", function () {
   });
 });
 
-// ====================== USE CURRENT LOCATION ======================
+// current location
 document
   .getElementById("useLocationBtn")
   .addEventListener("click", function () {
@@ -69,7 +69,7 @@ document
     );
   });
 
-// ====================== EDIT MODE ======================
+// edith
 const editId = new URLSearchParams(window.location.search).get("edit");
 let isEditMode = false;
 let originalImage = null;
@@ -82,7 +82,7 @@ if (editId) {
     isEditMode = true;
     originalImage = reportToEdit.image || null;
 
-    // Fill the form with existing data
+    // fill the form with existing data
     document.getElementById("reporterName").value =
       reportToEdit.reporterName || "";
     document.getElementById("reporterPhone").value =
@@ -105,7 +105,7 @@ if (editId) {
   }
 }
 
-// ====================== FORM SUBMIT ======================
+// submit form
 document.getElementById("reportForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -147,7 +147,7 @@ document.getElementById("reportForm").addEventListener("submit", function (e) {
     }
 
     if (isEditMode && editId) {
-      // ========== UPDATE EXISTING REPORT ==========
+      // update existing report
       reports = reports.map(function (report) {
         if (report.referenceId === editId) {
           return {
@@ -173,7 +173,7 @@ document.getElementById("reportForm").addEventListener("submit", function (e) {
         return;
       }
     } else {
-      // ========== CREATE NEW REPORT ==========
+      //create new report
       const report = {
         referenceId: "CR-" + Date.now().toString().slice(-6),
         reporterName: reporterName,
@@ -217,7 +217,7 @@ document.getElementById("reportForm").addEventListener("submit", function (e) {
     };
     reader.readAsDataURL(photoInput.files[0]);
   } else {
-    // If editing and no new image selected, keep the old one
+    // no new keep old
     saveReport(isEditMode ? originalImage : null);
   }
 });

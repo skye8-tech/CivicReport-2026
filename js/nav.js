@@ -1,4 +1,4 @@
-// Navbar
+// navbar
 const navbar = document.createElement("nav");
 
 navbar.className = `
@@ -153,4 +153,4 @@ navbar.appendChild(navRight);
 
 document.body.prepend(navbar);
 
-// footer
+

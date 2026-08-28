@@ -35,14 +35,14 @@ function updateImpactScore(resolved, total) {
     percentage = Math.round((resolved / total) * 100);
   }
 
-  // Update the number inside the circle
+  //circle number
   const circleText = document.querySelector(".circle");
   if (circleText) {
     circleText.textContent = percentage;
   }
 
-  // Update the blue progress (stroke)
-  // Full circle is about 213
+  //  blue progress
+  // full circle 213
   const offset = 213 - (213 * percentage) / 100;
   const progressCircle = document.querySelector(".progress-circle");
 
@@ -76,10 +76,10 @@ function loadReports(showAll = false) {
   document.getElementById("openIncidents").textContent = openCount;
   document.getElementById("resolvedCount").textContent = resolvedCount;
 
-  // Update the blue percentage circle
+  // blue percentage circle
   updateImpactScore(resolvedCount, reports.length);
 
-  // Decide how many reports to show
+  // decide how many reports to show
   let displayReports = reports.slice().reverse(); // newest first
 
   if (!showAll) {
@@ -161,6 +161,6 @@ function viewAllReports() {
   loadReports(true);
 }
 
-// Run when page loads
+// run when page loads
 showUserName();
 loadReports(false); // false = show only latest 5

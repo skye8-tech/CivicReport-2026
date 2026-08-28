@@ -93,6 +93,7 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
     password,
     createdAt: new Date().toISOString(),
   };
+  localStorage.setItem("authorityUsers", JSON.stringify(signup));
 
   saveUser(newUser);
 

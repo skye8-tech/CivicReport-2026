@@ -14,8 +14,7 @@ document
     const terms = document.getElementById("terms").checked;
 
     // validation
-
-    // 1. Check required fields
+//  Check required fields
     if (
       !fullName ||
       !email ||
@@ -28,31 +27,29 @@ document
       return;
     }
 
-    // 2. Simple email check
+    // Simple email check
     if (!email.includes("@") || !email.includes(".")) {
       alert("Please enter a valid email address!");
       return;
     }
 
-    // 3. Password length
+    // Password length
     if (password.length < 8) {
       alert("Password must be at least 8 characters long!");
       return;
     }
 
-    // 4. Passwords match
+    // Passwords match
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
 
-    // 5. Terms must be checked
+    //  must be checked
     if (!terms) {
       alert("You must agree to the Terms of Service!");
       return;
     }
-
-    //save to local storage
 
     // Create authority object
     const authority = {
@@ -65,10 +62,10 @@ document
       dateJoined: new Date().toLocaleString(),
     };
 
-    // Get existing authorities (or empty array)
+    // get existing authorities
     let authorities = JSON.parse(localStorage.getItem("authorityUsers")) || [];
 
-    // Check if email already exists
+    // if email exists
     const emailExists = authorities.some(function (user) {
       return user.email === email;
     });
@@ -81,7 +78,6 @@ document
     // Add new authority
     authorities.push(authority);
 
-    // Save back to localStorage
     localStorage.setItem("authorityUsers", JSON.stringify(authorities));
 
     // Success message
