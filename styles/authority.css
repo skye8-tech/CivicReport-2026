@@ -12,6 +12,8 @@
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
 .header h1 {
@@ -129,6 +131,8 @@ svg .green {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .action-header h2 {
@@ -139,6 +143,7 @@ svg .green {
 .tabs {
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
 .tab {
@@ -170,6 +175,8 @@ svg .green {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 6px;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
 .priority {
@@ -212,6 +219,8 @@ svg .green {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .location {
@@ -244,7 +253,6 @@ svg .green {
 
 /* Map */
 .map-box {
-    /* border: 1px solid var(--hbg); */
     border-radius: 12px;
     padding: 18px;
 }
@@ -258,13 +266,11 @@ svg .green {
 
 .map-area {
     height: 200px;
-    /* background: #f0f9ff; */
     border-radius: 8px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* color: var(--color); */
 }
 
 .dot {
@@ -298,6 +304,7 @@ svg .green {
     margin-top: 12px;
     font-size: 13px;
     color: var(--color);
+    flex-wrap: wrap;
 }
 
 .legend-item {
@@ -311,7 +318,6 @@ svg .green {
     height: 10px;
     border-radius: 50%;
 }
-
 
 /* modal */
 .modal {
@@ -421,10 +427,97 @@ hr {
     margin: 14px 0;
 }
 
+/* responsive */
+/* tablet */
+@media (max-width: 1024px) {
+    .container {
+        width: 90%;
+    }
 
+    .stat-title svg {
+        margin-left: 160px;
+    }
+}
 
+/* md tablet */
 @media (max-width: 800px) {
+    .container {
+        width: 95%;
+        margin: 15px auto;
+    }
+
     .top {
         grid-template-columns: 1fr;
+    }
+
+    .header h1 {
+        font-size: 32px;
+    }
+
+    .search-box {
+        padding-top: 10px;
+        width: 100%;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+
+    .search-icon {
+        top: 50%;
+    }
+
+    .stat-title svg {
+        position: static;
+        margin-left: 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        margin: 0;
+        padding: 0 12px;
+    }
+
+    .header h1 {
+        font-size: 26px;
+    }
+
+    .header p {
+        font-size: 13px;
+    }
+
+    .action-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .report-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btns {
+        margin-top: 8px;
+    }
+
+    .btns button {
+        margin-left: 0;
+        margin-right: 6px;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .detail-row .label {
+        width: 100%;
+    }
+
+    .map-area {
+        height: 160px;
     }
 }
