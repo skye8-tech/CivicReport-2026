@@ -37,7 +37,7 @@ document.getElementById("checkEmailBtn").addEventListener("click", function () {
 
   if (!user) {
     alert("No account found with this email. Please create an account first.");
-    window.location.href = "../pages/signup.html";
+    window.location.href = "../pages/admin-signup.html";
     return;
   }
 
@@ -95,7 +95,7 @@ document.getElementById("forgotForm").addEventListener("submit", function (e) {
 
     // Clear form and redirect
     document.getElementById("forgotForm").reset();
-    window.location.href = "../pages/login.html";
+    window.location.href = "../pages/admin-login.html";
   } else {
     alert("Error: User not found. Please try again.");
   }

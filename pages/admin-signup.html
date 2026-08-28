@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Admin Account</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <!-- card -->
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden max-w-5xl w-full flex flex-col md:flex-row">
+
+        <!-- left section -->
+        <div class="bg-blue-100 p-8 md:p-12 md:w-5/12 flex flex-col">
+
+            <!-- logo -->
+            <div class="flex items-center gap-2 mb-8 text-blue-600">
+
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
+                </svg>
+
+                <span class="text-xl font-semibold">CivicReport</span>
+
+            </div>
+
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">
+                Create Admin Account
+            </h1>
+
+            <p class="text-gray-600 mb-10 text-sm">
+                Create an administrator account to manage reports, users,
+                authorities, and community activities.
+            </p>
+
+            <!-- features -->
+            <div class="space-y-5">
+
+                <div class="flex items-start gap-3">
+
+                    <div class="bg-blue-600 text-white p-2 rounded-lg">
+                        ✓
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold">
+                            Manage Reports
+                        </h3>
+
+                        <p class="text-gray-600 text-sm">
+                            Review, verify, and manage community reports.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="flex items-start gap-3">
+
+                    <div class="bg-orange-400 text-white p-2 rounded-lg">
+                        👥
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold">
+                            Manage Users
+                        </h3>
+
+                        <p class="text-gray-600 text-sm">
+                            Manage registered users and authority accounts.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="flex items-start gap-3">
+
+                    <div class="bg-green-700 text-white p-2 rounded-lg">
+                        📊
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold">
+                            View Statistics
+                        </h3>
+
+                        <p class="text-gray-600 text-sm">
+                            Monitor reports and community activity.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- form section -->
+        <div class="p-8 md:p-10 md:w-7/12">
+
+            <h2 class="text-2xl font-bold text-gray-800 mb-1">
+                Admin Registration
+            </h2>
+
+            <p class="text-gray-500 text-sm mb-6">
+                Fill in your administrator details to create your account.
+            </p>
+
+
+            <form id="adminSignupForm" class="space-y-4">
+
+                <!-- full name -->
+                <div>
+
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        Full Name
+                        <span class="text-red-500">*</span>
+                    </label>
+
+                    <input type="text" id="adminName" required placeholder="Enter your full name"
+                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+
+                </div>
+
+
+                <!-- email -->
+                <div>
+
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        Email Address
+                        <span class="text-red-500">*</span>
+                    </label>
+
+                    <input type="email" id="adminEmail" required placeholder="Enter your email address"
+                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+
+                </div>
+
+
+                <!-- admin id -->
+                <div>
+
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        Admin ID
+                        <span class="text-red-500">*</span>
+                    </label>
+
+                    <input type="text" id="adminId" required placeholder="Enter admin ID"
+                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+
+                </div>
+
+
+                <!-- department -->
+                <div>
+
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        Department
+                        <span class="text-red-500">*</span>
+                    </label>
+
+                    <input type="text" id="adminDepartment" required placeholder="e.g. Administration Department"
+                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+
+                </div>
+
+
+                <!-- password -->
+                <div>
+
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        Password
+                        <span class="text-red-500">*</span>
+                    </label>
+
+                    <input type="password" id="adminPassword" required minlength="8" placeholder="At least 8 characters"
+                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+
+                </div>
+
+
+                <!-- confirm password -->
+                <div>
+
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        Confirm Password
+                        <span class="text-red-500">*</span>
+                    </label>
+
+                    <input type="password" id="adminConfirmPassword" required placeholder="Re-enter your password"
+                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+
+                </div>
+
+
+                <!-- terms -->
+                <div class="flex items-start gap-2 pt-1">
+
+                    <input type="checkbox" id="adminTerms" required
+                        class="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+
+                    <label for="adminTerms" class="text-sm text-gray-600">
+
+                        I agree to the
+                        <a href="#" class="text-blue-600 hover:underline">
+                            Terms of Service
+                        </a>
+                        and confirm that the information provided is accurate.
+
+                    </label>
+
+                </div>
+
+
+                <!-- submit -->
+                <button type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition mt-2">
+
+                    Create Admin Account
+
+                </button>
+
+            </form>
+
+
+            <!-- login -->
+            <p class="text-center text-sm text-gray-500 mt-6">
+
+                Already have an admin account?
+
+                <a href="../pages/admin-login.html" class="text-blue-600 font-medium hover:underline">
+
+                    Sign in
+
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script src="../js/admin-signup.js"></script>
+
+</body>
+
+</html>
