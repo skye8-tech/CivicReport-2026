@@ -179,13 +179,13 @@
 
 
                 <!-- Login Button -->
-                <a href="../pages/authority.html" type="submit" class="w-full bg-blue-600 hover:bg-blue-700
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700
                     text-white font-medium py-3 rounded-lg
                     transition">
 
                     Login as Authority
 
-                </a>
+                </button>
 
             </form>
 
@@ -222,30 +222,22 @@
     </div>
 
 
-    <!-- JavaScript -->
     <script>
+        document.getElementById("authorityLoginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
 
-        document
-            .getElementById("authorityLoginForm")
-            .addEventListener("submit", function (event) {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
 
-                event.preventDefault();
+            if (email === "" || password === "") {
+                alert("Please fill in all required fields.");
+                return;
+            }
 
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("password").value;
+            alert("Authority login successful!");
+            window.location.href = "../pages/authority.html";
 
-                if (email === "" || password === "") {
-                    alert("Please fill in all required fields.");
-                    return;
-                }
-
-                // Login logic can be connected to localStorage/backend here
-                alert("Authority login successful!");
-
-                // Example:
-                // window.location.href = "../pages/authority-dashboard.html";
-
-            });
+        });
 
     </script>
 
