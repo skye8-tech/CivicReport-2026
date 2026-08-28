@@ -1,6 +1,5 @@
 // navbar
 const navbar = document.createElement("nav");
-
 navbar.className = `
     w-full
     min-h-[82px]
@@ -27,10 +26,11 @@ logo.className = `
     text-[#1769aa]
     whitespace-nowrap
 `;
-logo.textContent = "CivicReport Platform";
+logo.textContent = "CivicReport";
 
-// links
+// links container
 const navLinks = document.createElement("div");
+navLinks.id = "navLinks";
 navLinks.className = `
     flex
     items-center
@@ -38,23 +38,25 @@ navLinks.className = `
     ml-10
     max-[850px]:ml-0
     max-[850px]:gap-6
-    max-[550px]:gap-4
+    max-[768px]:hidden
+    max-[768px]:flex-col
+    max-[768px]:absolute
+    max-[768px]:top-[82px]
+    max-[768px]:left-0
+    max-[768px]:w-full
+    max-[768px]:bg-white
+    max-[768px]:border-b
+    max-[768px]:border-gray-200
+    max-[768px]:shadow-md
+    max-[768px]:py-4
+    max-[768px]:gap-0
+    max-[768px]:z-40
 `;
 
 const links = [
-  {
-    text: "Public Feed",
-    href: "../pages/community.html",
-  },
-  {
-    text: "About",
-    href: "#",
-  },
-
-  {
-    text: "Contact",
-    href: "../pages/report.html",
-  },
+  { text: "Public Feed", href: "../pages/community.html" },
+  { text: "About", href: "#" },
+  { text: "Contact", href: "../pages/report.html" },
 ];
 
 links.forEach((link) => {
@@ -70,9 +72,13 @@ links.forEach((link) => {
         transition
         duration-300
         hover:text-[#1769aa]
+        max-[768px]:py-3
+        max-[768px]:w-full
+        max-[768px]:text-center
+        max-[768px]:border-b
+        max-[768px]:border-gray-100
     `;
 
-  // Check active page
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
   if (currentPage === link.href) {
     a.classList.remove("text-gray-600");
@@ -90,7 +96,7 @@ links.forEach((link) => {
   navLinks.appendChild(a);
 });
 
-// rigth
+// right side
 const navRight = document.createElement("div");
 navRight.className = `
     flex
@@ -99,7 +105,7 @@ navRight.className = `
     max-[550px]:gap-3
 `;
 
-// sbtn
+// sign in
 const signIn = document.createElement("a");
 signIn.href = "../pages/signup.html";
 signIn.textContent = "Sign In";
@@ -111,9 +117,10 @@ signIn.className = `
     transition
     duration-300
     hover:text-[#1769aa]
+    max-[480px]:text-[13px]
 `;
 
-// incident btn
+// report button
 const reportButton = document.createElement("a");
 reportButton.href = "../pages/report.html";
 reportButton.className = `
@@ -136,19 +143,53 @@ reportButton.className = `
     hover:-translate-y-[1px]
     max-[550px]:px-3
     max-[550px]:py-2
+    max-[480px]:text-xs
 `;
 
 reportButton.innerHTML = `
     <span>♧</span>
-    <span>Report Incident</span>
+    <span class="max-[400px]:hidden">Report Incident</span>
+    <span class="hidden max-[400px]:inline">Report</span>
 `;
 
-// append nav
+// burger button
+const burgerBtn = document.createElement("button");
+burgerBtn.id = "burgerBtn";
+burgerBtn.className = `
+    hidden
+    max-[768px]:flex
+    items-center
+    justify-center
+    w-10
+    h-10
+    text-2xl
+    text-[#1769aa]
+    bg-transparent
+    border-none
+    cursor-pointer
+`;
+burgerBtn.textContent = "☰";
+
+// append right items
 navRight.appendChild(signIn);
 navRight.appendChild(reportButton);
+navRight.appendChild(burgerBtn);
 
+// build navbar
 navbar.appendChild(logo);
 navbar.appendChild(navLinks);
 navbar.appendChild(navRight);
-
 document.body.prepend(navbar);
+
+// burger toggle
+burgerBtn.addEventListener("click", function () {
+  if (navLinks.classList.contains("max-[768px]:hidden")) {
+    navLinks.classList.remove("max-[768px]:hidden");
+    navLinks.classList.add("max-[768px]:flex");
+    burgerBtn.textContent = "✕";
+  } else {
+    navLinks.classList.add("max-[768px]:hidden");
+    navLinks.classList.remove("max-[768px]:flex");
+    burgerBtn.textContent = "☰";
+  }
+});
